@@ -1,0 +1,2 @@
+P&Gonzalez#David&123X&Valencua&Sagunt&46500&davgon@cas.es&Tue Mar 20 13:29:40 CET 2018&10.0#123&10.0&Tue Mar 20 13:30:34 CET 2018$1234&100.0&Tue Mar 20 13:30:39 CET 2018#0
+E&UJI&1234X&Castellon de la Plana&Castellon&223546&uji@uji.es&Tue Mar 20 13:30:11 CET 2018&100.0#0#0
