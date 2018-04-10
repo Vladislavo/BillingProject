@@ -12,7 +12,8 @@ import org.junit.Test;
 import ei1017.facturacion.recursos.Factura;
 import ei1017.facturacion.recursos.Llamada;
 import ei1017.facturacion.recursos.Periodo;
-import ei1017.facturacion.recursos.Tarifa;
+import ei1017.facturacion.tarifa.Tarifa;
+import ei1017.facturacion.tarifa.TarifaBasica;
 
 public class FacturaTest {
 	final static double EPSILON = 0.e-9;
@@ -46,7 +47,7 @@ public class FacturaTest {
 		}
 		finalDePeriodo = new Date();
 		llamadaDespuesDePeriodo = new Llamada("9999999", new Date(), 1.0);
-		tarifa = new Tarifa(0.1);
+		tarifa = new TarifaBasica();
 		llamadas = new ArrayList<Llamada>();
 		periodoDeFacturacion = new Periodo(inicioDePeriodo, finalDePeriodo);
 		

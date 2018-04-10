@@ -12,7 +12,8 @@ import ei1017.facturacion.excepciones.ClienteNoEncontradoException;
 import ei1017.facturacion.excepciones.FacturaNoEncontradaException;
 import ei1017.facturacion.recursos.AlmacenDeDatos;
 import ei1017.facturacion.recursos.Direccion;
-import ei1017.facturacion.recursos.Tarifa;
+import ei1017.facturacion.tarifa.Tarifa;
+import ei1017.facturacion.tarifa.TarifaBasica;
 
 public class AlmacenDeDatosTest {
 	final static double EPSILON = 0.e-9;
@@ -25,7 +26,7 @@ public class AlmacenDeDatosTest {
 	
 	@Test
 	public void anyadirClienteTest() {
-		Tarifa tarifa = new Tarifa(10.0);
+		Tarifa tarifa = new TarifaBasica();
 		Direccion direccion = new Direccion("Valencia", "Sagunt", 46500);
 		ClienteEmpresa clienteEmpresa = new ClienteEmpresa(tarifa, "FotoPepito", "123X", direccion, "pepito@foto.es", new Date());
 		almacen.anyadirCliente(clienteEmpresa);
@@ -34,7 +35,7 @@ public class AlmacenDeDatosTest {
 	
 	@Test
 	public void anyadirClientesMismoNieTest() {
-		Tarifa tarifa = new Tarifa(10.0);
+		Tarifa tarifa = new TarifaBasica();
 		Direccion direccion = new Direccion("Valencia", "Sagunt", 46500);
 		ClienteEmpresa clienteEmpresa0 = new ClienteEmpresa(tarifa, "FotoPepito", "123X", direccion, "pepito@foto.es", new Date());
 		ClienteEmpresa clienteEmpresa1 = new ClienteEmpresa(tarifa, "FotoPepito", "123X", direccion, "pepito@foto.es", new Date());
@@ -45,7 +46,7 @@ public class AlmacenDeDatosTest {
 	
 	@Test
 	public void eliminarClienteTest() throws ClienteNoEncontradoException {
-		Tarifa tarifa = new Tarifa(10.0);
+		Tarifa tarifa = new TarifaBasica();
 		Direccion direccion = new Direccion("Valencia", "Sagunt", 46500);
 		ClienteEmpresa clienteEmpresa0 = new ClienteEmpresa(tarifa, "FotoPepito", "123X", direccion, "pepito@foto.es", new Date());
 		almacen.anyadirCliente(clienteEmpresa0);
@@ -60,7 +61,7 @@ public class AlmacenDeDatosTest {
 	
 	@Test(expected=ClienteNoEncontradoException.class)
 	public void clienteNoEncontradoExceptionTest() throws ClienteNoEncontradoException {
-		Tarifa tarifa = new Tarifa(10.0);
+		Tarifa tarifa = new TarifaBasica();
 		Direccion direccion = new Direccion("Valencia", "Sagunt", 46500);
 		ClienteEmpresa clienteEmpresa0 = new ClienteEmpresa(tarifa, "FotoPepito", "123X", direccion, "pepito@foto.es", new Date());
 		almacen.anyadirCliente(clienteEmpresa0);
@@ -73,7 +74,7 @@ public class AlmacenDeDatosTest {
 	
 	@Test(expected=FacturaNoEncontradaException.class)
 	public void facturaNoEncontradaExceptionTest() throws FacturaNoEncontradaException {
-		Tarifa tarifa = new Tarifa(10.0);
+		Tarifa tarifa = new TarifaBasica();
 		Direccion direccion = new Direccion("Valencia", "Sagunt", 46500);
 		ClienteEmpresa clienteEmpresa0 = new ClienteEmpresa(tarifa, "FotoPepito", "123X", direccion, "pepito@foto.es", new Date());
 		

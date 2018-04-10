@@ -16,19 +16,32 @@ import java.util.Optional;
 import java.util.Scanner;
 
 import ei1017.facturacion.cliente.Cliente;
-import ei1017.facturacion.cliente.ClienteEmpresa;
-import ei1017.facturacion.cliente.ClienteParticular;
 import ei1017.facturacion.excepciones.PeriodoDeTiempoIncoherente;
+import ei1017.facturacion.fabricas.FabricaDeClientesImpl;
+import ei1017.facturacion.fabricas.FabricaDeTarifasImpl;
 import ei1017.facturacion.interfaces.EntradaRegistro;
+import ei1017.facturacion.tarifa.Tarifa;
+import ei1017.facturacion.tarifa.TarifaBasica;
+import ei1017.facturacion.tarifa.TipoDeTarifa;
 
 public class EntradaSalidaDeDatos {
+	/* Variables para gestionar las tarifas */
+	private final static int desde_hora = 16;
+	private final static int hasta_hora = 20;
+	private final static int dia = 6;
+	
+	private FabricaDeClientesImpl fabricaDeClientesImpl;
+	private FabricaDeTarifasImpl fabricaDeTarifasImpl;
+	
 	private Scanner sc;
 	private static final String FICHERO_DATOS_APLICACION = System.getProperty("user.dir") 
 			+ "/resources/datosDeAplicacion.bin";
 	
 	public EntradaSalidaDeDatos(){
 		super();
-		sc = new Scanner(System.in);	
+		sc = new Scanner(System.in);
+		this.fabricaDeClientesImpl = new FabricaDeClientesImpl();
+		this.fabricaDeTarifasImpl = new FabricaDeTarifasImpl();
 	}
 	
 	private Cliente getNuevoCliente(){
@@ -41,43 +54,61 @@ public class EntradaSalidaDeDatos {
 		System.out.println("Introduce el email del cliente:");
 		String email = sc.nextLine();
 		
-		System.out.println("Introduce la tarifa (euro/min): ");
-		Tarifa tarifa = new Tarifa (Double.parseDouble(sc.nextLine()));
+		Tarifa tarifa = new TarifaBasica ();
+		System.out.println("La tarifa básica fue asignada automáticamente.");
 		
 		System.out.println("Introduce la dirección:\nPoblación: ");
 		String poblacion = sc.nextLine();
 		System.out.println("Provincia: ");
 		String provincia = sc.nextLine();
 		System.out.println("Código postal: ");
+			
 		int codPostal = Integer.parseInt(sc.nextLine());
 		Direccion direccion = new Direccion(poblacion, provincia, codPostal);
 		
-		return new Cliente(tarifa, nombre, NIF, direccion, email, new Date());
+		return fabricaDeClientesImpl.getNuevoCliente(tarifa, nombre, NIF, direccion, email, new Date());
 	}
 	
-	public ClienteParticular getNuevoClienteParticular(){
+	public Cliente getNuevoClienteParticular(){
 		System.out.println("Introduce los apellidos del cliente:");
 		String apellidos = sc.nextLine();
 		
 		Cliente cliente = getNuevoCliente();
 		
-		return new ClienteParticular(cliente.getTarifa(), cliente.getNombre(), cliente.getNIF(),
+		return fabricaDeClientesImpl.getNuevoClienteParticular(cliente.getTarifa(), cliente.getNombre(), cliente.getNIF(),
 				cliente.getDireccion(), cliente.getEmail(), new Date(), apellidos);
 	}
 	
-	public ClienteEmpresa getNuevoClienteEmpresa(){
+	public Cliente getNuevoClienteEmpresa(){
 		Cliente cliente = getNuevoCliente();
 		
-		return new ClienteEmpresa(cliente.getTarifa(), cliente.getNombre(), cliente.getNIF(),
+		return fabricaDeClientesImpl.getNuevoClienteEmpresa(cliente.getTarifa(), cliente.getNombre(), cliente.getNIF(),
 				cliente.getDireccion(), cliente.getEmail(), new Date());
 	}
 	
 	
-	public Tarifa getNuevaTarifa(){
-		System.out.println("Indroduce nueva tarifa (euro/min): ");
-		Tarifa nuevaTarifa = new Tarifa(sc.nextDouble());
+	public void aplicarNuevaTarifa(Cliente cliente){
+		System.out.println("Elija la nueva tarifa: ");
 		
-		return nuevaTarifa;
+		System.out.println(TipoDeTarifa.getMenu());
+		byte opcion = Byte.parseByte(sc.nextLine());
+			
+		if(opcion >= 0 && opcion < TipoDeTarifa.values().length) {
+			TipoDeTarifa opcionMenu = TipoDeTarifa.getOpcion(opcion);
+			
+			switch(opcionMenu){
+				case DE_TARDE: {
+					cliente.setTarifa(fabricaDeTarifasImpl.getNuevaTarifaPorHoras(
+							cliente.getTarifa(), desde_hora, hasta_hora));
+					break;
+				}
+				case DOMINGO_GRATIS: {
+					cliente.setTarifa(fabricaDeTarifasImpl.getNuevaTarifaDiaria(
+							cliente.getTarifa(), dia));
+					break;
+				}
+			}
+		}
 	}
 	
 	public void listarDatosCliente(Cliente cliente){

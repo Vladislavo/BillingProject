@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import ei1017.facturacion.cliente.Cliente;
@@ -13,10 +14,12 @@ import ei1017.facturacion.interfaces.EntradaRegistro;
 public class AlmacenDeDatos implements Serializable {
 	private static final long serialVersionUID = -1065341850225848464L;
 	private Map<String, Cliente> clientes;
+	private AtomicInteger idFacturas;
 	
 	public AlmacenDeDatos(){
 		super();
 		clientes = new HashMap<String, Cliente>();
+		idFacturas = new AtomicInteger(0);
 	}
 	
 	public boolean anyadirCliente(Cliente cliente){
@@ -56,6 +59,10 @@ public class AlmacenDeDatos implements Serializable {
 			.collect(Collectors.toList());
 		
 		return resultado;
+	}
+	
+	public int siguienteIdFactura(){
+		return idFacturas.incrementAndGet();
 	}
 	
 	public Map<String, Cliente> getClientes(){

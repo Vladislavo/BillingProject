@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import ei1017.facturacion.interfaces.EntradaRegistro;
+import ei1017.facturacion.tarifa.Tarifa;
 
 public class Factura implements EntradaRegistro, Serializable {
 	private static final long serialVersionUID = 1L;
@@ -27,7 +28,7 @@ public class Factura implements EntradaRegistro, Serializable {
 		
 		for(Llamada llamada : llamadas){
 			if(periodoDeFacturacion.estaDentro(llamada.getFecha())){
-				importe += llamada.getDuracion()*tarifa.getTarifa();
+				importe += llamada.getDuracion()*tarifa.getImporte(llamada);
 			}
 		}
 		
@@ -55,8 +56,8 @@ public class Factura implements EntradaRegistro, Serializable {
 	}
 	
 	public String toWrite(){
-		return IDFactura + "&" + tarifa.getTarifa() + "&" + importe + "&" +
-				fechaDeEmision.toString() + "&" + importe + "&" + periodoDeFacturacion.toWrite();
+		return IDFactura + "&" + importe + "&" +
+				fechaDeEmision.toString() + "&" + periodoDeFacturacion.toWrite();
 	}
 
 	@Override

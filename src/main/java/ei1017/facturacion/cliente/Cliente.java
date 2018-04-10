@@ -13,7 +13,7 @@ import ei1017.facturacion.recursos.Direccion;
 import ei1017.facturacion.recursos.Factura;
 import ei1017.facturacion.recursos.Llamada;
 import ei1017.facturacion.recursos.Periodo;
-import ei1017.facturacion.recursos.Tarifa;
+import ei1017.facturacion.tarifa.Tarifa;
 
 public class Cliente implements EntradaRegistro, Serializable {
 	private static final long serialVersionUID = 1L;
@@ -105,16 +105,6 @@ public class Cliente implements EntradaRegistro, Serializable {
 		}
 		
 		return factura;
-	}
-	
-	public void cambiarTarifa(Tarifa tarifa){
-		this.tarifa = tarifa;
-	}
-	
-	public String toWrite(){
-		return nombre + "&" + NIF + "&" + direccion.getPoblacion() + "&" + 
-				direccion.getProvincia() + "&" + direccion.getCodigoPostal() + "&" +
-				email + "&" + fechaDeAlta.toString() + "&" + tarifa.getTarifa();
 	}
 	
 	@Override

@@ -1,9 +1,11 @@
 package ei1017.facturacion.recursos;
 
+import java.io.Serializable;
 import java.util.Date;
 import ei1017.facturacion.interfaces.EntradaRegistro;
 
-public class Llamada implements EntradaRegistro {
+public class Llamada implements EntradaRegistro, Serializable {
+	private static final long serialVersionUID = 1L;
 	private String numeroDeTelefono;
 	private Date fecha;
 	private double duracion;

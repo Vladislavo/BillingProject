@@ -3,7 +3,7 @@ package ei1017.facturacion.cliente;
 import java.util.Date;
 
 import ei1017.facturacion.recursos.Direccion;
-import ei1017.facturacion.recursos.Tarifa;
+import ei1017.facturacion.tarifa.Tarifa;
 
 public class ClienteEmpresa extends Cliente{
 	private static final long serialVersionUID = 1L;
