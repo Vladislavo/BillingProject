@@ -65,7 +65,6 @@ public class EntradaSalidaDeDatos {
 			
 		int codPostal = Integer.parseInt(sc.nextLine());
 		Direccion direccion = new Direccion(poblacion, provincia, codPostal);
-		
 		return fabricaDeClientesImpl.getNuevoCliente(tarifa, nombre, NIF, direccion, email, new Date());
 	}
 	

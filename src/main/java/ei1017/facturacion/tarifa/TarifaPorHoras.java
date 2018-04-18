@@ -20,6 +20,7 @@ public class TarifaPorHoras extends TarifaExtra implements Serializable {
 	@Override
 	public double getImporte(Llamada llamada){
 		if(aceptable(llamada)){
+			System.out.println(super.getImporte(llamada));
 			return IMPORTE*MINUTO < super.getImporte(llamada) ? IMPORTE*MINUTO : super.getImporte(llamada);
 		}
 		return super.getImporte(llamada);
