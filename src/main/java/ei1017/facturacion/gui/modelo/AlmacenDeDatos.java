@@ -1,4 +1,4 @@
-package ei1017.facturacion.recursos;
+package ei1017.facturacion.gui.modelo;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import ei1017.facturacion.cliente.Cliente;
 import ei1017.facturacion.excepciones.ClienteNoEncontradoException;
 import ei1017.facturacion.interfaces.EntradaRegistro;
+import ei1017.facturacion.recursos.Periodo;
 
 public class AlmacenDeDatos implements Serializable {
 	private static final long serialVersionUID = -1065341850225848464L;

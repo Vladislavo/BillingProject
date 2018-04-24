@@ -8,8 +8,8 @@ import ei1017.facturacion.excepciones.ClienteNoEncontradoException;
 import ei1017.facturacion.excepciones.PeriodoDeTiempoIncoherente;
 import ei1017.facturacion.gui.OpcionesCliente;
 import ei1017.facturacion.gui.OpcionesMenuCliente;
+import ei1017.facturacion.gui.modelo.AlmacenDeDatos;
 import ei1017.facturacion.interfaces.EntradaRegistro;
-import ei1017.facturacion.recursos.AlmacenDeDatos;
 import ei1017.facturacion.recursos.EntradaSalidaDeDatos;
 import ei1017.facturacion.recursos.Periodo;
 

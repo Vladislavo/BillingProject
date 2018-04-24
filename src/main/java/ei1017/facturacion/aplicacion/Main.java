@@ -1,6 +1,6 @@
 package ei1017.facturacion.aplicacion;
 
-import ei1017.facturacion.recursos.AlmacenDeDatos;
+import ei1017.facturacion.gui.modelo.AlmacenDeDatos;
 import ei1017.facturacion.recursos.EntradaSalidaDeDatos;
 
 public class Main {

@@ -19,6 +19,7 @@ import ei1017.facturacion.cliente.Cliente;
 import ei1017.facturacion.excepciones.PeriodoDeTiempoIncoherente;
 import ei1017.facturacion.fabricas.FabricaDeClientesImpl;
 import ei1017.facturacion.fabricas.FabricaDeTarifasImpl;
+import ei1017.facturacion.gui.modelo.AlmacenDeDatos;
 import ei1017.facturacion.interfaces.EntradaRegistro;
 import ei1017.facturacion.tarifa.Tarifa;
 import ei1017.facturacion.tarifa.TarifaBasica;

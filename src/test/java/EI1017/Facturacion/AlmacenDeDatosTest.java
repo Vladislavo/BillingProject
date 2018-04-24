@@ -10,7 +10,7 @@ import org.junit.Test;
 import ei1017.facturacion.cliente.ClienteEmpresa;
 import ei1017.facturacion.excepciones.ClienteNoEncontradoException;
 import ei1017.facturacion.excepciones.FacturaNoEncontradaException;
-import ei1017.facturacion.recursos.AlmacenDeDatos;
+import ei1017.facturacion.gui.modelo.AlmacenDeDatos;
 import ei1017.facturacion.recursos.Direccion;
 import ei1017.facturacion.tarifa.Tarifa;
 import ei1017.facturacion.tarifa.TarifaBasica;
