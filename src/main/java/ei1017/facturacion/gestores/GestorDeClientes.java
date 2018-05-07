@@ -1,4 +1,4 @@
-package ei1027.facturacion.gestores;
+package ei1017.facturacion.gestores;
 
 import java.util.Collection;
 import java.util.Scanner;
