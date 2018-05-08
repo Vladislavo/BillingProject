@@ -5,11 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 import ei1017.facturacion.gui.controlador.Controlador;
 
@@ -20,27 +26,34 @@ public class Vista {
 	private ClientesListener clientesListener;
 	private FacturasListener facturasListener;
 	private LlamadasListener llamadasListener;
+	private BotonesClientesListener botonesClientesListener;
+	private BotonesFacturasListener botonesFacturasListener;
+	private BotonesLlamadasListener botonesLlamadasListener;
 	
-	
-	Vista(Controlador controlador){
+	public Vista(Controlador controlador){
 		this.controlador = controlador;
 		frame = new JFrame("Facturación de Telefonía Móvil");
 		clientesListener = new ClientesListener();
 		facturasListener = new FacturasListener();
 		llamadasListener = new LlamadasListener();
-		dibujaTablero();
+		botonesClientesListener = new BotonesClientesListener();
+		botonesFacturasListener = new BotonesFacturasListener();
+		botonesLlamadasListener = new BotonesLlamadasListener();
 	}
 	
 	public void dibujaTablero() {
 		anyadeMenu();
-		anyadePanelEstado("Estado actual");
-		frame.setSize(500, 600);
+		anyadePanelEstado("Bienvenido a la aplicación.");
+		frame.setSize(300, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 		frame.setVisible(true);	
 	}
 
 	private void anyadePanelEstado(String string) {
-		
+		JPanel panelEstado = new JPanel();
+		estado = new JLabel(string);
+		panelEstado.add(estado);
+		frame.getContentPane().add(panelEstado, BorderLayout.SOUTH);
 	}
 
 	private void anyadeMenu() {
@@ -53,14 +66,26 @@ public class Vista {
 		opcionesClientes.setMnemonic(KeyEvent.VK_C);
 		
 		// crear item de menu
-		JMenuItem darDeAltaItem = new JMenuItem("Dar de alta");
-		darDeAltaItem.setMnemonic(KeyEvent.VK_N);
+		JMenu darDeAltaSubmenu = new JMenu("Dar de alta");
+		darDeAltaSubmenu.setMnemonic(KeyEvent.VK_N);
 		// pequena explicacion del item
-		darDeAltaItem.setToolTipText("Dar de alta a un nuevo cliente.");
+		darDeAltaSubmenu.setToolTipText("Dar de alta a un nuevo cliente.");
 		// asignacion del comando para que MenuListener lo pueda reconocer
-		darDeAltaItem.setActionCommand("nuevo");
+		JMenuItem clienteParticularItem = new JMenuItem("Particular");
+		clienteParticularItem.setMnemonic(KeyEvent.VK_P);
+		clienteParticularItem.setActionCommand("particular");
+		clienteParticularItem.addActionListener(clientesListener);
+		
+		JMenuItem clienteEmpresaItem = new JMenuItem("Empresa");
+		clienteEmpresaItem.setMnemonic(KeyEvent.VK_E);
+		clienteEmpresaItem.setActionCommand("empresa");
+		clienteEmpresaItem.addActionListener(clientesListener);
+		
+		darDeAltaSubmenu.add(clienteParticularItem);
+		darDeAltaSubmenu.add(clienteEmpresaItem);
+		
 		// asigancion del actionlistner
-		darDeAltaItem.addActionListener(clientesListener);
+		darDeAltaSubmenu.addActionListener(clientesListener);
 		
 		JMenuItem borrarClienteItem = new JMenuItem("Borrar");
 		borrarClienteItem.setMnemonic(KeyEvent.VK_B);
@@ -92,7 +117,7 @@ public class Vista {
 		entreFechasClienteItem.setActionCommand("2fechas");
 		entreFechasClienteItem.addActionListener(clientesListener);
 		
-		opcionesClientes.add(darDeAltaItem);
+		opcionesClientes.add(darDeAltaSubmenu);
 		opcionesClientes.add(recuperarDatosClienteItem);
 		opcionesClientes.add(listarClientesItem);
 		opcionesClientes.add(cambiarTarifaClienteItem);
@@ -168,30 +193,227 @@ public class Vista {
 	private class ClientesListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			frame.getContentPane().removeAll();
+			frame.getContentPane().revalidate();
+			frame.getContentPane().repaint();
+			anyadeMenu();
+			
 			String command = e.getActionCommand();
 			switch(command) {
-				case "nuevo" : {
+				case "empresa" : {
+					JPanel panelTitulo = new JPanel();
+					JLabel titulo = new JLabel("Crear nuevo cliente empresa");
+					panelTitulo.add(titulo);
+					frame.getContentPane().add(panelTitulo, BorderLayout.NORTH);
+					frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
 					
-					 break;
+					JPanel nombrePanel = new JPanel();
+					nombrePanel.add(new JLabel("Nombre"));
+					nombrePanel.add(new JTextField(20));
+					frame.getContentPane().add(nombrePanel, BorderLayout.CENTER);
+					
+					JPanel nifPanel = new JPanel();
+					nifPanel.add(new JLabel("NIF"));
+					nifPanel.add(new JTextField(20));
+					frame.getContentPane().add(nifPanel, BorderLayout.CENTER);
+					
+					JPanel emailPanel = new JPanel();
+					emailPanel.add(new JLabel("Email"));
+					emailPanel.add(new JTextField(20));
+					frame.getContentPane().add(emailPanel, BorderLayout.CENTER);
+					
+					JPanel poblacionPanel = new JPanel();
+					poblacionPanel.add(new JLabel("Población"));
+					poblacionPanel.add(new JTextField(20));
+					frame.getContentPane().add(poblacionPanel, BorderLayout.CENTER);
+					
+					JPanel provinciaPanel = new JPanel();
+					provinciaPanel.add(new JLabel("Provincia"));
+					provinciaPanel.add(new JTextField(20));
+					frame.getContentPane().add(provinciaPanel, BorderLayout.CENTER);
+					
+					JPanel cpPanel = new JPanel();
+					cpPanel.add(new JLabel("Código postal"));
+					cpPanel.add(new JTextField(20));
+					frame.getContentPane().add(cpPanel, BorderLayout.CENTER);
+					
+					JPanel botonPanel = new JPanel();
+					JButton anyadir = new JButton("Dar de alta");
+					anyadir.setActionCommand("empresa");
+					anyadir.addActionListener(botonesClientesListener);
+					botonPanel.add(anyadir);
+					frame.getContentPane().add(botonPanel, BorderLayout.CENTER);
+
+					anyadePanelEstado("Menu cliente");
+					
+					frame.pack();
+					break;
+				}
+				case "particular" : {
+					JPanel panelTitulo = new JPanel();
+					JLabel titulo = new JLabel("Crear nuevo cliente particular");
+					panelTitulo.add(titulo);
+					frame.getContentPane().add(panelTitulo, BorderLayout.NORTH);
+					frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
+					
+					JPanel nombrePanel = new JPanel();
+					nombrePanel.add(new JLabel("Nombre"));
+					nombrePanel.add(new JTextField(20));
+					frame.getContentPane().add(nombrePanel, BorderLayout.CENTER);
+					
+					JPanel apellidosPanel = new JPanel();
+					apellidosPanel.add(new JLabel("Apellidos"));
+					apellidosPanel.add(new JTextField(20));
+					frame.getContentPane().add(apellidosPanel, BorderLayout.CENTER);
+					
+					JPanel nifPanel = new JPanel();
+					nifPanel.add(new JLabel("NIF"));
+					nifPanel.add(new JTextField(20));
+					frame.getContentPane().add(nifPanel, BorderLayout.CENTER);
+					
+					JPanel emailPanel = new JPanel();
+					emailPanel.add(new JLabel("Email"));
+					emailPanel.add(new JTextField(20));
+					frame.getContentPane().add(emailPanel, BorderLayout.CENTER);
+					
+					JPanel poblacionPanel = new JPanel();
+					poblacionPanel.add(new JLabel("Población"));
+					poblacionPanel.add(new JTextField(20));
+					frame.getContentPane().add(poblacionPanel, BorderLayout.CENTER);
+					
+					JPanel provinciaPanel = new JPanel();
+					provinciaPanel.add(new JLabel("Provincia"));
+					provinciaPanel.add(new JTextField(20));
+					frame.getContentPane().add(provinciaPanel, BorderLayout.CENTER);
+					
+					JPanel cpPanel = new JPanel();
+					cpPanel.add(new JLabel("Código postal"));
+					cpPanel.add(new JTextField(20));
+					frame.getContentPane().add(cpPanel, BorderLayout.CENTER);
+					
+					JPanel botonPanel = new JPanel();
+					JButton anyadir = new JButton("Dar de alta");
+					botonPanel.add(anyadir);
+					anyadir.setActionCommand("Particular");
+					anyadir.addActionListener(botonesClientesListener);
+					frame.getContentPane().add(botonPanel, BorderLayout.CENTER);
+
+					anyadePanelEstado("Menu cliente");
+					
+					frame.pack();
+					break;
 				}
 				case "borrar" : {
+					JPanel panelTitulo = new JPanel();
+					JLabel titulo = new JLabel("Borrar clientes");
+					panelTitulo.add(titulo);
+					frame.getContentPane().add(panelTitulo, BorderLayout.NORTH);
+					frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
 					
+					JPanel nifPanel = new JPanel();
+					nifPanel.add(new JLabel("NIF"));
+					nifPanel.add(new JTextField(20));
+					frame.getContentPane().add(nifPanel, BorderLayout.CENTER);
+					
+					JPanel botonPanel = new JPanel();
+					JButton borrarButton = new JButton("Borrar");
+					botonPanel.add(borrarButton);
+					frame.getContentPane().add(borrarButton, BorderLayout.CENTER);
+					
+					anyadePanelEstado("Menu cliente");
+					frame.pack();
 					break;
 				}
 				case "camtarifa" : {
+					JPanel panelTitulo = new JPanel();
+					JLabel titulo = new JLabel("Cambiar tarifa de clientes");
+					panelTitulo.add(titulo);
+					frame.getContentPane().add(panelTitulo, BorderLayout.NORTH);
+					frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
 					
+					JPanel nifPanel = new JPanel();
+					nifPanel.add(new JLabel("NIF"));
+					nifPanel.add(new JTextField(20));
+					frame.getContentPane().add(nifPanel, BorderLayout.CENTER);
+					
+					JPanel eleccionTarifaPanel = new JPanel();
+					JRadioButton basicaButton = new JRadioButton("Básica");
+					JRadioButton deTardeButton = new JRadioButton("De tarde");
+					JRadioButton dominogGratisButton = new JRadioButton("Domingo Gratis");
+					ButtonGroup grupoTarifa = new ButtonGroup();
+					grupoTarifa.add(basicaButton);
+					grupoTarifa.add(deTardeButton);
+					grupoTarifa.add(dominogGratisButton);
+					eleccionTarifaPanel.add(basicaButton);
+					eleccionTarifaPanel.add(deTardeButton);
+					eleccionTarifaPanel.add(dominogGratisButton);
+					frame.add(eleccionTarifaPanel);
+					
+					JPanel botonPanel = new JPanel();
+					JButton borrarButton = new JButton("Cambiar tarifa");
+					botonPanel.add(borrarButton);
+					frame.getContentPane().add(borrarButton, BorderLayout.CENTER);
+					
+					anyadePanelEstado("Menu cliente");
+					frame.pack();
 					break;
 				}
 				case "datosnif" : {
+					JPanel panelTitulo = new JPanel();
+					JLabel titulo = new JLabel("Cambiar tarifa de clientes");
+					panelTitulo.add(titulo);
+					frame.getContentPane().add(panelTitulo, BorderLayout.NORTH);
+					frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
 					
+					JPanel nifPanel = new JPanel();
+					nifPanel.add(new JLabel("NIF"));
+					nifPanel.add(new JTextField(20));
+					frame.getContentPane().add(nifPanel, BorderLayout.CENTER);
+					
+					JPanel infoClientePanel = new JPanel();
+					infoClientePanel.add(new JTextField("Informacion sobre cliente"));
+					frame.getContentPane().add(infoClientePanel, BorderLayout.CENTER);
+					
+					JPanel botonPanel = new JPanel();
+					JButton borrarButton = new JButton("Recuperar");
+					botonPanel.add(borrarButton);
+					frame.getContentPane().add(borrarButton, BorderLayout.CENTER);
+					
+					anyadePanelEstado("Menu cliente");
+					frame.pack();
 					break;
 				}
 				case "listar" : {
+					JPanel panelTitulo = new JPanel();
+					JLabel titulo = new JLabel("Listado de todos clientes");
+					panelTitulo.add(titulo);
+					frame.getContentPane().add(panelTitulo, BorderLayout.NORTH);
+					frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
 					
+					
+					JPanel botonPanel = new JPanel();
+					JButton borrarButton = new JButton("Listar");
+					botonPanel.add(borrarButton);
+					frame.getContentPane().add(borrarButton, BorderLayout.CENTER);
+					
+					anyadePanelEstado("Menu cliente");
+					frame.pack();
 					break;
 				}
 				case "2fechas" : {
+					JPanel panelTitulo = new JPanel();
+					JLabel titulo = new JLabel("Elija las fechas");
+					panelTitulo.add(titulo);
+					frame.getContentPane().add(panelTitulo, BorderLayout.NORTH);
+					frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
 					
+					JPanel botonPanel = new JPanel();
+					JButton borrarButton = new JButton("Listar");
+					botonPanel.add(borrarButton);
+					frame.getContentPane().add(borrarButton, BorderLayout.CENTER);
+					
+					anyadePanelEstado("Menu cliente");
+					frame.pack();
 					break;
 				}
 			}
@@ -200,6 +422,10 @@ public class Vista {
 	private class FacturasListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			frame.removeAll();
+			frame.revalidate();
+			frame.repaint();
+
 			String command = e.getActionCommand();
 			switch(command) {
 				case "emitir" : {
@@ -224,6 +450,10 @@ public class Vista {
 	private class LlamadasListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			frame.removeAll();
+			frame.revalidate();
+			frame.repaint();
+			
 			String command = e.getActionCommand();
 			switch(command) {
 				case "nueva" : {
@@ -240,5 +470,47 @@ public class Vista {
 				}
 			}
 		}
+	}
+	private class BotonesClientesListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String command = e.getActionCommand();
+			
+			switch (command) {
+				case "" : {
+					
+					break;
+				}
+			}
+		}
+		
+	}
+	private class BotonesFacturasListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String command = e.getActionCommand();
+			
+			switch (command) {
+				case "" : {
+					
+					break;
+				}
+			}
+		}
+		
+	}
+	private class BotonesLlamadasListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String command = e.getActionCommand();
+			
+			switch (command) {
+				case "" : {
+					
+					break;
+				}
+			}
+		}
+		
 	}
 }
