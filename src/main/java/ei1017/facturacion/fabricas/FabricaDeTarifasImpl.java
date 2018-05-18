@@ -1,12 +1,15 @@
 package ei1017.facturacion.fabricas;
 
+import java.io.Serializable;
+
 import ei1017.facturacion.interfaces.FabricaDeTarifasInt;
 import ei1017.facturacion.tarifa.Tarifa;
 import ei1017.facturacion.tarifa.TarifaBasica;
 import ei1017.facturacion.tarifa.TarifaDiaria;
 import ei1017.facturacion.tarifa.TarifaPorHoras;
 
-public class FabricaDeTarifasImpl implements FabricaDeTarifasInt {
+public class FabricaDeTarifasImpl implements FabricaDeTarifasInt, Serializable {
+	private static final long serialVersionUID = 1L;
 
 	public FabricaDeTarifasImpl(){
 		super();

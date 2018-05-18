@@ -109,7 +109,7 @@ public class Cliente implements EntradaRegistro, Serializable {
 	
 	@Override
 	public String toString(){
-		return "Nombre: " + nombre + ", NIF: " + NIF + ", email: " + email + ", " + direccion +
-				", " + tarifa + ", fecha de alta: " + fechaDeAlta.toString();
+		return "Nombre: " + nombre + "\nNIF: " + NIF + "\nEmail: " + email + "\n" + direccion +
+				"\n" + tarifa + "\nFecha de alta: " + fechaDeAlta.toString()+"\n";
 	}
 }

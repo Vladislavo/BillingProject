@@ -34,7 +34,7 @@ public class TarifaPorHoras extends TarifaExtra implements Serializable {
 	
 	@Override
 	public String toString(){
-		return super.toString() + ", por horas, de " + desde + " a " + hasta + " gratis.";
+		return "Tarifa por horas, de " + desde + " a " + hasta + " gratis.";
 	}
 	
 }

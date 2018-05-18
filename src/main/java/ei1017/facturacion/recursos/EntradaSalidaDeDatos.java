@@ -207,7 +207,8 @@ public class EntradaSalidaDeDatos {
 			ois.close();
 			fis.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("El fichero " + FICHERO_DATOS_APLICACION + " no encontado."
+					+ " Creado nuevo almacen");
 			almacen = new AlmacenDeDatos();
 		} catch (IOException e) {
 			e.printStackTrace();
