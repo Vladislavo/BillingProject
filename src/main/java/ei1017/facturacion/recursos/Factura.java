@@ -55,11 +55,6 @@ public class Factura implements EntradaRegistro, Serializable {
 		return importe;
 	}
 	
-	public String toWrite(){
-		return IDFactura + "&" + importe + "&" +
-				fechaDeEmision.toString() + "&" + periodoDeFacturacion.toWrite();
-	}
-
 	@Override
 	public Date getFecha() {
 		return fechaDeEmision;
@@ -68,6 +63,6 @@ public class Factura implements EntradaRegistro, Serializable {
 	@Override()
 	public String toString(){
 		return "Factura #" + IDFactura + "\nFecha de emisión: " + fechaDeEmision + "\n" +
-				periodoDeFacturacion + "\n" + tarifa + "\n" + "Importe: " + importe;
+				periodoDeFacturacion + "\n" + tarifa + "\n" + "Importe: " + importe + "\n";
 	}
 }

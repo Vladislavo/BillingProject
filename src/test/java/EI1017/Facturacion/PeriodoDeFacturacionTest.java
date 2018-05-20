@@ -7,6 +7,8 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
+import ei1017.facturacion.excepciones.CampoDeFechaVacioException;
+import ei1017.facturacion.excepciones.PeriodoDeTiempoIncoherenteException;
 import ei1017.facturacion.recursos.Periodo;
 
 public class PeriodoDeFacturacionTest {
@@ -18,7 +20,7 @@ public class PeriodoDeFacturacionTest {
 	Date despues;
 	
 	@Before
-	public void init() {
+	public void init() throws PeriodoDeTiempoIncoherenteException, CampoDeFechaVacioException {
 		antes = new Date();
 		try {
 			Thread.sleep(2);

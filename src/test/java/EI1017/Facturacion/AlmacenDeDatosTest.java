@@ -10,18 +10,18 @@ import org.junit.Test;
 import ei1017.facturacion.cliente.ClienteEmpresa;
 import ei1017.facturacion.excepciones.ClienteNoEncontradoException;
 import ei1017.facturacion.excepciones.FacturaNoEncontradaException;
-import ei1017.facturacion.gui.modelo.AlmacenDeDatos;
+import ei1017.facturacion.gui.modelo.AlmacenDeDatosModeloImpl;
 import ei1017.facturacion.recursos.Direccion;
 import ei1017.facturacion.tarifa.Tarifa;
 import ei1017.facturacion.tarifa.TarifaBasica;
 
 public class AlmacenDeDatosTest {
 	final static double EPSILON = 0.e-9;
-	AlmacenDeDatos almacen;
+	AlmacenDeDatosModeloImpl almacen;
 	
 	@Before
 	public void init(){
-		almacen = new AlmacenDeDatos();
+		almacen = new AlmacenDeDatosModeloImpl();
 	}
 	
 	@Test
@@ -30,7 +30,7 @@ public class AlmacenDeDatosTest {
 		Direccion direccion = new Direccion("Valencia", "Sagunt", 46500);
 		ClienteEmpresa clienteEmpresa = new ClienteEmpresa(tarifa, "FotoPepito", "123X", direccion, "pepito@foto.es", new Date());
 		almacen.anyadirCliente(clienteEmpresa);
-		assertTrue(almacen.tamanio() == 1);
+		assertTrue(almacen.tamanyo() == 1);
 	}
 	
 	@Test
@@ -41,7 +41,7 @@ public class AlmacenDeDatosTest {
 		ClienteEmpresa clienteEmpresa1 = new ClienteEmpresa(tarifa, "FotoPepito", "123X", direccion, "pepito@foto.es", new Date());
 		almacen.anyadirCliente(clienteEmpresa0);
 		almacen.anyadirCliente(clienteEmpresa1);
-		assertTrue(almacen.tamanio() == 1);
+		assertTrue(almacen.tamanyo() == 1);
 	}
 	
 	@Test
@@ -56,7 +56,7 @@ public class AlmacenDeDatosTest {
 		
 
 		almacen.borrarCliente(clienteEmpresa1);
-		assertTrue(almacen.tamanio() == 1);
+		assertTrue(almacen.tamanyo() == 1);
 	}
 	
 	@Test(expected=ClienteNoEncontradoException.class)
@@ -83,7 +83,7 @@ public class AlmacenDeDatosTest {
 	
 	@Test
 	public void almacenVacioTest() {
-		assertFalse(almacen.tamanio() > 0);
+		assertFalse(almacen.tamanyo() > 0);
 	}
 
 }

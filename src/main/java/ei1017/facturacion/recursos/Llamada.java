@@ -25,10 +25,6 @@ public class Llamada implements EntradaRegistro, Serializable {
 		return duracion;
 	}
 	
-	public String toWrite(){
-		return numeroDeTelefono + "&" + duracion +"&" + fecha;
-	}
-	
 	@Override
 	public Date getFecha() {
 		return fecha;
@@ -36,7 +32,7 @@ public class Llamada implements EntradaRegistro, Serializable {
 
 	@Override
 	public String toString(){
-		return "Número de teléfono: " + numeroDeTelefono + ", Duración: " + duracion + ", Fecha: " + fecha.toString();
+		return "Número de teléfono: " + numeroDeTelefono + "\nDuración: " + duracion + "\nFecha: " + fecha.toString() + "\n";
 	}
 	
 }

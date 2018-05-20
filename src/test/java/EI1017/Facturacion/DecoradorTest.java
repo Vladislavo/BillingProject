@@ -11,7 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ei1017.facturacion.cliente.Cliente;
+import ei1017.facturacion.excepciones.CampoDeFechaVacioException;
 import ei1017.facturacion.excepciones.FacturaNoEncontradaException;
+import ei1017.facturacion.excepciones.PeriodoDeTiempoIncoherenteException;
 import ei1017.facturacion.fabricas.FabricaDeClientesImpl;
 import ei1017.facturacion.fabricas.FabricaDeTarifasImpl;
 import ei1017.facturacion.interfaces.FabricaDeTarifasInt;
@@ -39,7 +41,7 @@ public class DecoradorTest {
 	
 	@SuppressWarnings("deprecation")
 	@Before
-	public void before(){
+	public void before() throws PeriodoDeTiempoIncoherenteException, CampoDeFechaVacioException{
 		Direccion direccion = new Direccion("Castellon", "Castellon", 48000);
 		fabricaDeClientes = new FabricaDeClientesImpl();
 		cliente = fabricaDeClientes.getNuevoClienteEmpresa(new TarifaBasica(), "UJI", "123X", direccion, "info@uji.es", new Date());

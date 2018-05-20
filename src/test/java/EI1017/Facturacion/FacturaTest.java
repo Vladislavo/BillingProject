@@ -9,6 +9,8 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import ei1017.facturacion.excepciones.CampoDeFechaVacioException;
+import ei1017.facturacion.excepciones.PeriodoDeTiempoIncoherenteException;
 import ei1017.facturacion.recursos.Factura;
 import ei1017.facturacion.recursos.Llamada;
 import ei1017.facturacion.recursos.Periodo;
@@ -29,7 +31,7 @@ public class FacturaTest {
 	List<Llamada> llamadas;
 	
 	@Before
-	public void init(){
+	public void init() throws PeriodoDeTiempoIncoherenteException, CampoDeFechaVacioException{
 		llamadaAntesDePeriodo = new Llamada("00000000", new Date(), 1.0);
 		inicioDePeriodo = new Date();
 		// Para fijar bien el periodo de llamadas
