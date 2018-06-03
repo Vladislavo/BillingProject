@@ -30,39 +30,61 @@ public class Renderizador {
 		contentPane.add(panelTitulo, BorderLayout.NORTH);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		
+		JLabel nombreLabel = new JLabel("Nombre:");
+		JLabel nifLabel = new JLabel("NIF:");
+		JLabel emailLabel = new JLabel("Email:");
+		JLabel poblacionLabel = new JLabel("Población:");
+		JLabel provinciaLabel = new JLabel("Provincia:");
+		JLabel cpLabel = new JLabel("Código postal:");
+		
 		JPanel nombrePanel = new JPanel();
 		datosCliente[TipoCampo.NOMBRE.ordinal()] = new JTextField(20);
-		nombrePanel.add(new JLabel("Nombre"));
+		nombreLabel.setMinimumSize(cpLabel.getMinimumSize());
+		nombreLabel.setMaximumSize(cpLabel.getMaximumSize());
+		nombreLabel.setPreferredSize(cpLabel.getPreferredSize());
+		nombrePanel.add(nombreLabel);
 		nombrePanel.add(datosCliente[TipoCampo.NOMBRE.ordinal()]);
 		contentPane.add(nombrePanel, BorderLayout.CENTER);
 		
 		JPanel nifPanel = new JPanel();
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
-		nifPanel.add(new JLabel("NIF"));
+		nifLabel.setMinimumSize(cpLabel.getMinimumSize());
+		nifLabel.setMaximumSize(cpLabel.getMaximumSize());
+		nifLabel.setPreferredSize(cpLabel.getPreferredSize());
+		nifPanel.add(nifLabel);
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);
 		
 		JPanel emailPanel = new JPanel();
 		datosCliente[TipoCampo.EMAIL.ordinal()] = new JTextField(20);
-		emailPanel.add(new JLabel("Email"));
+		emailLabel.setMinimumSize(cpLabel.getMinimumSize());
+		emailLabel.setMaximumSize(cpLabel.getMaximumSize());
+		emailLabel.setPreferredSize(cpLabel.getPreferredSize());
+		emailPanel.add(emailLabel);
 		emailPanel.add(datosCliente[TipoCampo.EMAIL.ordinal()]);
 		contentPane.add(emailPanel, BorderLayout.CENTER);
 		
 		JPanel poblacionPanel = new JPanel();
 		datosCliente[TipoCampo.POBLACION.ordinal()] = new JTextField(20);
-		poblacionPanel.add(new JLabel("Población"));
+		poblacionLabel.setMinimumSize(cpLabel.getMinimumSize());
+		poblacionLabel.setMaximumSize(cpLabel.getMaximumSize());
+		poblacionLabel.setPreferredSize(cpLabel.getPreferredSize());
+		poblacionPanel.add(poblacionLabel);
 		poblacionPanel.add(datosCliente[TipoCampo.POBLACION.ordinal()]);
 		contentPane.add(poblacionPanel, BorderLayout.CENTER);
 		
 		JPanel provinciaPanel = new JPanel();
 		datosCliente[TipoCampo.PROVINCIA.ordinal()] = new JTextField(20);
-		provinciaPanel.add(new JLabel("Provincia"));
+		provinciaLabel.setMinimumSize(cpLabel.getMinimumSize());
+		provinciaLabel.setMaximumSize(cpLabel.getMaximumSize());
+		provinciaLabel.setPreferredSize(cpLabel.getPreferredSize());
+		provinciaPanel.add(provinciaLabel);
 		provinciaPanel.add(datosCliente[TipoCampo.PROVINCIA.ordinal()]);
 		contentPane.add(provinciaPanel, BorderLayout.CENTER);
 		
 		JPanel cpPanel = new JPanel();
 		datosCliente[TipoCampo.CODIGO_POSTAL.ordinal()] = new JTextField(20);
-		cpPanel.add(new JLabel("Código postal"));
+		cpPanel.add(cpLabel);
 		cpPanel.add(datosCliente[TipoCampo.CODIGO_POSTAL.ordinal()]);
 		contentPane.add(cpPanel, BorderLayout.CENTER);
 	}
@@ -74,45 +96,71 @@ public class Renderizador {
 		contentPane.add(panelTitulo, BorderLayout.NORTH);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		
-		datosCliente[TipoCampo.APELLIDOS.ordinal()] = new JTextField(20);
+		JLabel apellidosLabel = new JLabel("Apellidos:");
+		JLabel nombreLabel = new JLabel("Nombre:");
+		JLabel nifLabel = new JLabel("NIF:");
+		JLabel emailLabel = new JLabel("Email:");
+		JLabel poblacionLabel = new JLabel("Población:");
+		JLabel provinciaLabel = new JLabel("Provincia:");
+		JLabel cpLabel = new JLabel("Código postal:");
+		
 		JPanel apellidosPanel = new JPanel();
-		apellidosPanel.add(new JLabel("Apellidos"));
+		datosCliente[TipoCampo.APELLIDOS.ordinal()] = new JTextField(20);
+		apellidosLabel.setMinimumSize(cpLabel.getMinimumSize());
+		apellidosLabel.setMaximumSize(cpLabel.getMaximumSize());
+		apellidosLabel.setPreferredSize(cpLabel.getPreferredSize());
+		apellidosPanel.add(apellidosLabel);
 		apellidosPanel.add(datosCliente[TipoCampo.APELLIDOS.ordinal()]);
 		contentPane.add(apellidosPanel, BorderLayout.CENTER);
 		
 		JPanel nombrePanel = new JPanel();
 		datosCliente[TipoCampo.NOMBRE.ordinal()] = new JTextField(20);
-		nombrePanel.add(new JLabel("Nombre"));
+		nombreLabel.setMinimumSize(cpLabel.getMinimumSize());
+		nombreLabel.setMaximumSize(cpLabel.getMaximumSize());
+		nombreLabel.setPreferredSize(cpLabel.getPreferredSize());
+		nombrePanel.add(nombreLabel);
 		nombrePanel.add(datosCliente[TipoCampo.NOMBRE.ordinal()]);
 		contentPane.add(nombrePanel, BorderLayout.CENTER);
 		
 		JPanel nifPanel = new JPanel();
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
-		nifPanel.add(new JLabel("NIF"));
+		nifLabel.setMinimumSize(cpLabel.getMinimumSize());
+		nifLabel.setMaximumSize(cpLabel.getMaximumSize());
+		nifLabel.setPreferredSize(cpLabel.getPreferredSize());
+		nifPanel.add(nifLabel);
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);
 		
 		JPanel emailPanel = new JPanel();
 		datosCliente[TipoCampo.EMAIL.ordinal()] = new JTextField(20);
-		emailPanel.add(new JLabel("Email"));
+		emailLabel.setMinimumSize(cpLabel.getMinimumSize());
+		emailLabel.setMaximumSize(cpLabel.getMaximumSize());
+		emailLabel.setPreferredSize(cpLabel.getPreferredSize());
+		emailPanel.add(emailLabel);
 		emailPanel.add(datosCliente[TipoCampo.EMAIL.ordinal()]);
 		contentPane.add(emailPanel, BorderLayout.CENTER);
 		
 		JPanel poblacionPanel = new JPanel();
 		datosCliente[TipoCampo.POBLACION.ordinal()] = new JTextField(20);
-		poblacionPanel.add(new JLabel("Población"));
+		poblacionLabel.setMinimumSize(cpLabel.getMinimumSize());
+		poblacionLabel.setMaximumSize(cpLabel.getMaximumSize());
+		poblacionLabel.setPreferredSize(cpLabel.getPreferredSize());
+		poblacionPanel.add(poblacionLabel);
 		poblacionPanel.add(datosCliente[TipoCampo.POBLACION.ordinal()]);
 		contentPane.add(poblacionPanel, BorderLayout.CENTER);
 		
 		JPanel provinciaPanel = new JPanel();
 		datosCliente[TipoCampo.PROVINCIA.ordinal()] = new JTextField(20);
-		provinciaPanel.add(new JLabel("Provincia"));
+		provinciaLabel.setMinimumSize(cpLabel.getMinimumSize());
+		provinciaLabel.setMaximumSize(cpLabel.getMaximumSize());
+		provinciaLabel.setPreferredSize(cpLabel.getPreferredSize());
+		provinciaPanel.add(provinciaLabel);
 		provinciaPanel.add(datosCliente[TipoCampo.PROVINCIA.ordinal()]);
 		contentPane.add(provinciaPanel, BorderLayout.CENTER);
 		
 		JPanel cpPanel = new JPanel();
 		datosCliente[TipoCampo.CODIGO_POSTAL.ordinal()] = new JTextField(20);
-		cpPanel.add(new JLabel("Código postal"));
+		cpPanel.add(cpLabel);
 		cpPanel.add(datosCliente[TipoCampo.CODIGO_POSTAL.ordinal()]);
 		contentPane.add(cpPanel, BorderLayout.CENTER);
 	}
@@ -126,7 +174,7 @@ public class Renderizador {
 		
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
 		JPanel nifPanel = new JPanel();
-		nifPanel.add(new JLabel("NIF"));
+		nifPanel.add(new JLabel("NIF:"));
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);
 	}
@@ -140,7 +188,7 @@ public class Renderizador {
 		
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
 		JPanel nifPanel = new JPanel();
-		nifPanel.add(new JLabel("NIF"));
+		nifPanel.add(new JLabel("NIF:"));
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);
 		
@@ -167,7 +215,7 @@ public class Renderizador {
 		
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
 		JPanel nifPanel = new JPanel();
-		nifPanel.add(new JLabel("NIF"));
+		nifPanel.add(new JLabel("NIF:"));
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);
 		
@@ -210,7 +258,7 @@ public class Renderizador {
 		
 		JPanel nifPanel = new JPanel();
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
-		nifPanel.add(new JLabel("NIF"));
+		nifPanel.add(new JLabel("NIF:"));
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);
 	}
@@ -222,14 +270,20 @@ public class Renderizador {
 		contentPane.add(panelTitulo, BorderLayout.NORTH);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		
+		JLabel nifLabel = new JLabel("NIF:");
+		JLabel idLabel = new JLabel("ID de factura:");
+		
 		JPanel nifPanel = new JPanel();
-		nifPanel.add(new JLabel("NIF"));
+		nifLabel.setMinimumSize(idLabel.getMinimumSize());
+		nifLabel.setPreferredSize(idLabel.getPreferredSize());
+		nifLabel.setMaximumSize(idLabel.getMaximumSize());
+		nifPanel.add(nifLabel);
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);
 		
 		JPanel idFacturaPanel = new JPanel();
-		idFacturaPanel.add(new JLabel("ID de factura"));
+		idFacturaPanel.add(idLabel);
 		datosCliente[TipoCampo.ID_FACTURA.ordinal()] = new JTextField(20);
 		idFacturaPanel.add(datosCliente[TipoCampo.ID_FACTURA.ordinal()]);
 		contentPane.add(idFacturaPanel, BorderLayout.CENTER);
@@ -249,7 +303,7 @@ public class Renderizador {
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		
 		JPanel nifPanel = new JPanel();
-		nifPanel.add(new JLabel("NIF"));
+		nifPanel.add(new JLabel("NIF:"));
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);
@@ -270,7 +324,7 @@ public class Renderizador {
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		
 		JPanel nifPanel = new JPanel();
-		nifPanel.add(new JLabel("NIF"));
+		nifPanel.add(new JLabel("NIF:"));
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);
@@ -283,20 +337,30 @@ public class Renderizador {
 		contentPane.add(panelTitulo, BorderLayout.NORTH);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		
+		JLabel nifLabel = new JLabel("NIF:");
+		JLabel numTelLabel = new JLabel("Número:");
+		JLabel duracionLabel = new JLabel("Duración:");
+		
 		JPanel nifPanel = new JPanel();
-		nifPanel.add(new JLabel("NIF"));
+		nifLabel.setMinimumSize(duracionLabel.getMinimumSize());
+		nifLabel.setPreferredSize(duracionLabel.getPreferredSize());
+		nifLabel.setMaximumSize(duracionLabel.getMaximumSize());
+		nifPanel.add(nifLabel);
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);
 		
 		JPanel numeroPanel = new JPanel();
-		numeroPanel.add(new JLabel("Número"));
+		numTelLabel.setMinimumSize(duracionLabel.getMinimumSize());
+		numTelLabel.setPreferredSize(duracionLabel.getPreferredSize());
+		numTelLabel.setMaximumSize(duracionLabel.getMaximumSize());
+		numeroPanel.add(numTelLabel);
 		datosCliente[TipoCampo.NUMERO_TELEFONO.ordinal()] = new JTextField(20);
 		numeroPanel.add(datosCliente[TipoCampo.NUMERO_TELEFONO.ordinal()]);
 		contentPane.add(numeroPanel, BorderLayout.CENTER);
 		
 		JPanel duracionPanel = new JPanel();
-		duracionPanel.add(new JLabel("Duración"));
+		duracionPanel.add(duracionLabel);
 		datosCliente[TipoCampo.DURACION.ordinal()] = new JTextField(20);
 		duracionPanel.add(datosCliente[TipoCampo.DURACION.ordinal()]);
 		contentPane.add(duracionPanel, BorderLayout.CENTER);
@@ -310,7 +374,7 @@ public class Renderizador {
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		
 		JPanel nifPanel = new JPanel();
-		nifPanel.add(new JLabel("NIF"));
+		nifPanel.add(new JLabel("NIF:"));
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);
@@ -331,7 +395,7 @@ public class Renderizador {
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		
 		JPanel nifPanel = new JPanel();
-		nifPanel.add(new JLabel("NIF"));
+		nifPanel.add(new JLabel("NIF:"));
 		datosCliente[TipoCampo.NIF.ordinal()] = new JTextField(20);
 		nifPanel.add(datosCliente[TipoCampo.NIF.ordinal()]);
 		contentPane.add(nifPanel, BorderLayout.CENTER);

@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JFrame;
@@ -93,6 +94,7 @@ public class VistaImpl implements VistaInt, Serializable {
 	public void dibujaTablero() {
 		anyadeMenu();
 		anyadePanelEstado("Bienvenido a la aplicación.");
+		frame.add(new JLabel(new ImageIcon("resources/fac.jpg")), BorderLayout.CENTER);
 		frame.setSize(300, 300);
 		frame.setVisible(true);
 		frame.addWindowListener(escuchadorVentana);
